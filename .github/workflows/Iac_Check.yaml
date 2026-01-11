@@ -18,7 +18,7 @@ jobs:
       - name: Checkov Github actions
         uses: bridgecrewio/checkov-action@v12
         with:
-          directory: terraform-aws/
+          directory: tf-aws/
           output_format: cli
         
       - name: Notify on success
