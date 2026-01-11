@@ -1,0 +1,30 @@
+name : IaC-Check
+
+on: 
+  push:
+    #branches: ["main"]
+  
+  # Allows you to run this workflow manually from the Actions tab  
+  workflow_dispatch: manually
+
+
+jobs:
+  check-iac-scanning:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Checkov Github actions
+        uses: bridgecrewio/checkov-action@v12
+        with:
+          directory: terraform-aws/
+          output_format: cli
+        
+        if: success() || failure()
+        with: 
+          sarif_file : results.sarif
+
+
+    
