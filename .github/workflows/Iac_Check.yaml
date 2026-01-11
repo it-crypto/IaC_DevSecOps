@@ -21,9 +21,12 @@ jobs:
           directory: terraform-aws/
           output_format: cli
         
-        if: success() || failure()
-        with: 
-          sarif_file : results.sarif
+      - name: Notify on success
+        # This step will only run if all previous steps in this job succeeded
+        if: ${{ success() }}
+        run: echo "Workflow passed successfully."
 
-
-    
+      - name: Notify on failure
+        # This step will only run if any previous step in this job failed
+        if: ${{ failure() }}
+        run: echo "Workflow failed with an error."
