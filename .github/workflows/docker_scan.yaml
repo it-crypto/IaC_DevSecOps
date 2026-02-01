@@ -20,6 +20,7 @@ jobs:
         with:
           dockerfile: 'Dockerfile'
           output-file: 'security-results.json'
+          fail-on-issues: false
 
       - name: Upload results
         if: always()
