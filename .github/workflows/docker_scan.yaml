@@ -1,6 +1,8 @@
 name : Scan for docker vulnerabilities
 
 on:
+  push:
+    #branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -17,13 +19,14 @@ jobs:
         uses: cr0hn/dockerfile-security@v0.2.0
         with:
           dockerfile: 'Dockerfile'
+          output-file: 'security-results.json'
 
       - name: Upload results
         if: always()
         uses: actions/upload-artifact@v5
         with: 
           name: security-df-results
-          path: security-df-results.json
+          path: security-results.json
 
       - name: Set Docker buildx
         uses: docker/setup-buildx-action@v2
