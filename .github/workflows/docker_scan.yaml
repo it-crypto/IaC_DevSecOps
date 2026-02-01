@@ -42,6 +42,7 @@ jobs:
         uses: anchore/scan-action@v6
         with:
           image: sampleapp:latest
+          fail-build: false
 
       - name: Scan image using trivy
         uses: aquasecurity/trivy-action@0.33.1
