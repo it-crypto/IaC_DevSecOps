@@ -39,6 +39,6 @@ jobs:
           image: localbuild/sampleapp:latest
 
       - name: Scan image using trivy
-        uses: LogixDevCo/trivy-scan-action@v1.0.0
+        uses: aquasecurity/trivy-action@0.33.1
         with:
           image: localbuild/sampleapp:latest
