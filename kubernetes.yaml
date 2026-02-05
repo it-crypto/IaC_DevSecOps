@@ -1,0 +1,13 @@
+apiVersion : 1
+kind: Pod
+metadata:
+  name: python-pod
+  labels:
+    app: python-app
+
+spec:
+  containers:
+  - name: python
+    image: python:3.13-alpine3.23
+    ports:
+    - containerPort: 80
